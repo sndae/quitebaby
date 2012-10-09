@@ -34,10 +34,24 @@ public class GameContainer implements IGameContainer{
 	 * creation.
 	 */
 	public GameContainer(){
-		input = null;
-		graphics = null;
-		state = null;
-		running = true;
+		this.input = null;
+		this.graphics = null;
+		this.state = null;
+		this.running = true;
+	}
+	
+	/**
+	 * Creates a new GameContainer with specified input, graphics, and state, and is currently 
+	 * running.
+	 * @param input the input mechanisms to be used.
+	 * @param graphics the rendering mechanisms to be used.
+	 * @param state the first game state to be run.
+	 */
+	public GameContainer(IInput input, IGraphics graphics, IGameState state){
+		this.input = input;
+		this.graphics = graphics;
+		this.state = state;
+		this.running = true;
 	}
 	
 	/**
