@@ -16,7 +16,7 @@ public interface IGraphics {
 	 * will be drawn starting at the top left corner and going down and to the right.
 	 * @param image the image to be drawn
 	 * @param x the desired x axis position of the image's top left corner
-	 * @param y the desired y axis position of the image's top right corner
+	 * @param y the desired y axis position of the image's top left corner
 	 */
 	public void draw(Drawable image, float x, float y);
 }
