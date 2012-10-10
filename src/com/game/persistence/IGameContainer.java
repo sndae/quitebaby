@@ -36,6 +36,14 @@ public interface IGameContainer {
 	public IGraphics getGraphics();
 
 	/**
+	 * Set whether the game should be running.
+	 * 
+	 * @param running
+	 *            whether the game should be running.
+	 */
+	public void setRunning(boolean running);
+
+	/**
 	 * Get whether the game should be running.
 	 * 
 	 * @return whether the game should be running.
