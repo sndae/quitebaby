@@ -73,35 +73,40 @@ public class PlayState extends BaseGameState {
 	 */
 	@Override
 	public void update(IGameContainer container) {
+		// STEP 1: CHECK INPUT============================================
 		// Get input listeners from the game container.
 		IInput input = container.getInput();
 		// Poll y-axis motion from the accelerometer.
 		float accelY = input.getAccelY();
+		// STEP 2: CHECK FOR TIME REMAINING===============================
 		// If timeRemaining is greater than 0...
 		if (this.timeRemaining > 0) {
+			// STEP 3A: ADJUST BABY CRY LEVEL BASED ON INPUT==============
 			// Determine whether the input is "no shake", "weak shake", or
 			// "strong shake", and respond accordingly.
 			// If accelY is "no shake"...
 			if (accelY < WEAK_SHAKE) {
 				// Increase babyCryLevel by CRY_NORMAL.
 				this.babyCryLevel += CRY_NORMAL;
-			// Else if accelY is "weak shake"...
+				// Else if accelY is "weak shake"...
 			} else if (accelY > WEAK_SHAKE && accelY < STRONG_SHAKE) {
 				// If babyCryLevel is greater than 0...
 				if (this.babyCryLevel > 0) {
 					// Decrease babyCryLevel by CRY_GOOD.
 					this.babyCryLevel -= CRY_GOOD;
 				}
-			// Else if accelY is "strong shake"...
+				// Else if accelY is "strong shake"...
 			} else if (accelY > STRONG_SHAKE) {
 				// Increase babyCryLevel by CRY_BAD.
 				this.babyCryLevel += CRY_BAD;
 			}
+			// STEP 4A: ADJUST SCORE======================================
 			// If babyCryLevel is = 0...
 			if (this.babyCryLevel == 0) {
 				// Increase score by SCORE_INCREASE.
 				this.score += SCORE_INCREASE;
 			}
+			// STEP 5A: DECREASE TIME REMAINING===========================
 			// Decrease timeRemaining by 1 frame.
 			this.timeRemaining -= 1;
 		}
