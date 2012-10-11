@@ -9,6 +9,11 @@ package com.game.persistence;
  */
 public interface IInput {
 	/**
+	 * Reads and stores the input from the device's input mechanisms.
+	 */
+	public void pollInput();
+	
+	/**
 	 * Get the X axis value of the device's accelerometer.
 	 * 
 	 * @return the X value of the accelerometer.0

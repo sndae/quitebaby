@@ -68,14 +68,18 @@ public class GameContainer implements IGameContainer {
 	}
 
 	/**
-	 * The game loop, which consists of updating game logic and then rendering
-	 * the updated game environment to the screen. This cycle continues until
-	 * something specifies that it should stop, such as a request to exit the
-	 * application.
+	 * The game loop, which consists of polling input, updating game logic, and
+	 * then rendering the updated game environment to the screen. This cycle
+	 * continues until something specifies that it should stop, such as a
+	 * request to exit the application.
 	 */
 	public void gameLoop() {
 		while (running) {
+			// Read and record device input.
+			this.input.pollInput();
+			// Update game logic.
 			this.state.update(this);
+			// Render the updated game environment to the screen.
 			this.state.render(this);
 		}
 	}
