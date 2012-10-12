@@ -215,8 +215,8 @@ public class PlayState extends BaseGameState {
 				}
 			}
 			// =====STEP 4A: ADJUST SCORE======
-			// If babyCryLevel is BABY_HAPPY...
-			if (this.babyCryLevel == BABY_HAPPY) {
+			// If babyCryLevel is less than or equal to BABY_HAPPY...
+			if (this.babyCryLevel <= BABY_HAPPY) {
 				// Increase score by SCORE_INCREASE.
 				this.score += SCORE_INCREASE;
 			}
