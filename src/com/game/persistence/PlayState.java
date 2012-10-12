@@ -160,15 +160,15 @@ public class PlayState extends BaseGameState {
 	 */
 	@Override
 	public void update(IGameContainer container) {
-		// STEP 1: CHECK INPUT============================================
+		// =====STEP 1: CHECK INPUT=====
 		// Get input from the game container.
 		IInput input = container.getInput();
 		// Poll y-axis motion from the accelerometer.
 		float accelY = input.getAccelY();
-		// STEP 2: CHECK FOR TIME REMAINING===============================
+		// =====STEP 2: CHECK FOR TIME REMAINING=====
 		// If timeRemaining is greater than GAME_END...
 		if (this.timeRemaining > GAME_END) {
-			// STEP 3A: ADJUST BABY CRY LEVEL BASED ON INPUT==============
+			// =====STEP 3A: ADJUST BABY CRY LEVEL BASED ON INPUT=====
 			// Determine whether the input is "no shake", "weak shake", or
 			// "strong shake", and respond accordingly.
 			// If accelY is "no shake"...
@@ -187,18 +187,18 @@ public class PlayState extends BaseGameState {
 				// Increase babyCryLevel by CRY_CHANGE_STRONG.
 				this.babyCryLevel += CRY_CHANGE_STRONG;
 			}
-			// STEP 4A: ADJUST SCORE======================================
+			// =====STEP 4A: ADJUST SCORE======
 			// If babyCryLevel is BABY_HAPPY...
 			if (this.babyCryLevel == BABY_HAPPY) {
 				// Increase score by SCORE_INCREASE.
 				this.score += SCORE_INCREASE;
 			}
-			// STEP 5A: DECREASE TIME REMAINING===========================
+			// =====STEP 5A: DECREASE TIME REMAINING=====
 			// Decrease timeRemaining by FRAME_LENGTH.
 			this.timeRemaining += FRAME_LENGTH;
 			// Else, there is no time remaining...
 		} else {
-			// STEP 3B: END THE GAME======================================
+			// =====STEP 3B: END THE GAME=====
 		}
 	}
 
@@ -211,13 +211,13 @@ public class PlayState extends BaseGameState {
 	@Override
 	public void render(IGameContainer container) {
 		// REMINDER: Render images in order from back to front.
-		// STEP 1: GET RENDERING MECHANISMS===============================
+		// =====STEP 1: GET RENDERING MECHANISMS=====
 		// Get rendering mechanisms from the game container.
 		IGraphics graphics = container.getGraphics();
-		// STEP 2: RENDER BACKGROUND======================================
+		// =====STEP 2: RENDER BACKGROUND=====
 		// Draw the background.
 		graphics.draw(this.background, BACKGROUND_X, BACKGROUND_Y);
-		// STEP 3: RENDER BABY============================================
+		// =====STEP 3: RENDER BABY=====
 		// Check whether baby should be crying or happy, and render
 		// the appropriate image.
 		// If babyCryLevel is BABY_HAPPY...
