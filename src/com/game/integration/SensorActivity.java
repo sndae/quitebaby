@@ -1,5 +1,7 @@
 package com.game.integration;
 
+import com.game.persistence.IInput;
+
 import android.app.Activity;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -14,9 +16,15 @@ import android.hardware.SensorManager;
  * @author Kenny
  */
 
-public class SensorActivity extends Activity implements SensorEventListener {
+public class SensorActivity extends Activity implements SensorEventListener, IInput {
 	private final SensorManager mSensorManager;
 	private final Sensor mAccelerometer;
+	private float accelX;
+	private float accelY;
+	private float accelZ;
+	private float touchX;
+	private float touchY;
+
 
 	/**
 	 * method to get access sensor activity
@@ -59,5 +67,33 @@ public class SensorActivity extends Activity implements SensorEventListener {
 	 */
 
 	public void onSensorChanged(SensorEvent event) {
+		
+		
+	}
+	
+public void pollInput(){}
+	
+
+	public float getAccelX(){
+		return accelX;}
+
+
+	public float getAccelY(){
+		return accelY;}
+
+	
+	public float getAccelZ(){
+		
+		return accelZ;}
+
+	
+	public float getTouchX(){
+		
+		return touchX ;
+	}
+
+	
+	public float getTouchY(){
+		return touchY;
 	}
 }
