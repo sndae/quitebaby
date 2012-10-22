@@ -75,6 +75,8 @@ public void pollInput(){}
 	
 
 	public float getAccelX(){
+		
+		
 		return accelX;}
 
 
