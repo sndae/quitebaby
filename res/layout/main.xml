@@ -4,11 +4,38 @@
     android:layout_height="match_parent" >
 
     <TextView
+        android:id="@+id/y_axis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:text="@string/hello_world"
-        tools:context=".MainGameActivity" />
+        android:layout_marginRight="52dp"
+        android:layout_marginTop="34dp" />
+
+    <TextView
+        android:id="@+id/x_axis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="44dp" />
+
+    <TextView
+        android:id="@+id/z_axis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/x_axis"
+        android:layout_alignBottom="@+id/x_axis"
+        android:layout_marginLeft="42dp"
+        android:layout_toRightOf="@+id/x_axis" />
+
+    <Gallery
+        android:id="@+id/image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="68dp"
+        android:layout_toRightOf="@+id/z_axis" />
 
 </RelativeLayout>
