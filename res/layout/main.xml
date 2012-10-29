@@ -1,7 +1,8 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@drawable/baby" >
 
     <TextView
         android:id="@+id/y_axis"
@@ -10,7 +11,11 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="52dp"
-        android:layout_marginTop="34dp" />
+        android:layout_marginTop="34dp"
+        android:textSize="50dp"
+        android:layout_gravity="center"
+        tools:context=".MainGameActivity"
+         />
 
     <TextView
         android:id="@+id/x_axis"
@@ -37,5 +42,39 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="68dp"
         android:layout_toRightOf="@+id/z_axis" />
+     <Button
+        android:id="@+id/newGameButton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="New Game" />
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Resume Game"
+        android:id="@+id/resumeGameButton"
+     />
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="High Scores"
+        android:id="@+id/highScoresButton"
+     />
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Settings"
+        android:id="@+id/settingsButton"
+     />
+    <Button
+        android:id="@+id/howToPlayButton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="How To Play"
+    />
+    
 
-</RelativeLayout>
+</LinearLayout>
