@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -25,7 +25,7 @@
         android:layout_centerVertical="true"
         android:layout_marginTop="44dp" />
 
-    <TextView
+   <TextView
         android:id="@+id/z_axis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -42,39 +42,43 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="68dp"
         android:layout_toRightOf="@+id/z_axis" />
-     <Button
+	 <Button
         android:id="@+id/newGameButton"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="New Game" />
+        android:text="@string/new_game" />
     <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Resume Game"
         android:id="@+id/resumeGameButton"
-     />
-    <Button
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="High Scores"
+        android:text="@string/resume_game"
+         />
+    <Button
         android:id="@+id/highScoresButton"
-     />
-    <Button
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Settings"
-        android:id="@+id/settingsButton"
-     />
+        android:text="@string/high_scores"
+         />
     <Button
         android:id="@+id/howToPlayButton"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="How To Play"
-    />
+        android:text="@string/how_to_play" />
+    <Button
+        android:id="@+id/optionsButton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/options" />
+    <Button
+        android:id="@+id/quitButton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/quit"/>
     
 
-</LinearLayout>
+</FrameLayout>

@@ -5,9 +5,10 @@
     <string name="title_activity_main_game">MainGameActivity</string>
     <string name="new_game">New Game</string>
     <string name="resume_game">Resume Game </string>
-    <string name="highscores">High Scores</string>
+    <string name="high_scores">High Scores</string>
     <string name="options">Options</string>
     <string name="how_to_play">How To Play</string>
+    <string name="quit">Quit</string>
 
 
 </resources>
