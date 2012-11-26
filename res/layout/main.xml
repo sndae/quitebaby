@@ -1,4 +1,4 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<HorizontalLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -44,14 +44,13 @@
         android:layout_toRightOf="@+id/z_axis" />
 	 <Button
         android:id="@+id/newGameButton"
-        android:layout_width="200dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="@string/new_game" />
     <Button
         android:id="@+id/resumeGameButton"
-        android:layout_width="200dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:text="@string/resume_game"
          />
     <Button
@@ -81,4 +80,4 @@
         android:text="@string/quit"/>
     
 
-</FrameLayout>
+</HorizontalLayout>

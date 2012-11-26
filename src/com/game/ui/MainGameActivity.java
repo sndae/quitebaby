@@ -3,6 +3,7 @@ package com.game.ui;
 import com.game.ui.R;
 
 import android.os.Bundle;
+import android.content.Intent;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
@@ -15,21 +16,20 @@ public class MainGameActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		
-		Button new_game, resume_game, high_scores,options, how_to_play,test_button,quit;
-		new_game = (Button) findViewById(R.id.newGameButton);
-		resume_game = (Button) findViewById(R.id.resumeGameButton);
-		high_scores = (Button) findViewById(R.id.highScoresButton);
-		how_to_play = (Button) findViewById(R.id.howToPlayButton);
-		options = (Button) findViewById(R.id.optionsButton);
-		quit = (Button) findViewById(R.id.quitButton);
+		
+		Button new_game = (Button) findViewById(R.id.newGameButton);
+		Button resume_game = (Button) findViewById(R.id.resumeGameButton);
+		Button high_scores = (Button) findViewById(R.id.highScoresButton);
+		Button how_to_play = (Button) findViewById(R.id.howToPlayButton);
+		Button options = (Button) findViewById(R.id.optionsButton);
+		Button quit = (Button) findViewById(R.id.quitButton);
 				
-
 		new_game.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new 
+				 
 			}
-		});
+			});
 		resume_game.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
@@ -43,11 +43,21 @@ public class MainGameActivity extends Activity {
 		how_to_play.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				Intent intent = new Intent(v.getContext(),HowToPlayMenu.class);
 			}
 		});
-		settings.setOnClickListener(new View.OnClickListener() {
+		options.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				Intent intent = new Intent(v.getContext(),OptionsMenu.class);
+			}
+		});
+		quit.setOnClickListener(new View.OnClickListener() {
+			
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				finish();
+				System.exit(0);
 			}
 		});
 

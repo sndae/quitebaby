@@ -9,6 +9,17 @@
     <string name="options">Options</string>
     <string name="how_to_play">How To Play</string>
     <string name="quit">Quit</string>
-
-
+	<string name ="instructions">Instructions:</string>
+	<string name ="more">More</string>
+	<string name ="sound">Sound</string>
+	<string name = "difficulty">Difficulty</string>
+	<string-array name ="soundOptions">
+	    <item>On</item>
+	    <item>Off</item>
+	</string-array>
+	<string-array name="difficultyOptions">
+	    <item>Easy</item>
+	    <item>Normal</item>
+	    <item>Hard</item>
+	</string-array>
 </resources>
