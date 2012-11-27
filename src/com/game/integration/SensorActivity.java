@@ -84,15 +84,10 @@ public class SensorActivity extends Activity implements SensorEventListener, IIn
 	 */
 
 	public void onSensorChanged(SensorEvent event) {
-		TextView tvX = (TextView)findViewById(R.id.x_axis);
-		TextView tvY = (TextView)findViewById(R.id.y_axis);
-		TextView tvZ = (TextView)findViewById(R.id.z_axis);
-		ImageView iv = (ImageView)findViewById(R.id.image);
+		
 		
 
-		tvX.setText("0.0");
-		tvY.setText("0.0");
-		tvZ.setText("0.0");
+		
 		
 		
 		float x = event.values[0];
@@ -103,9 +98,7 @@ public class SensorActivity extends Activity implements SensorEventListener, IIn
 			accelX = x;
 			accelY = y;
 			accelZ = z;
-			tvX.setText("0.0");
-			tvY.setText("0.0");
-			tvZ.setText("0.0");
+			
 			mInitialized = true;
 			} else {
 			float deltaX = Math.abs(accelX - x);
@@ -117,17 +110,7 @@ public class SensorActivity extends Activity implements SensorEventListener, IIn
 			accelX = x;
 			accelY = y;
 			accelZ = z;
-			tvX.setText(Float.toString(deltaX));
-			tvY.setText(Float.toString(deltaY));
-			tvZ.setText(Float.toString(deltaZ));
-			iv.setVisibility(View.VISIBLE);
-			if (deltaX > deltaY) {
-				iv.setImageResource(R.drawable.horizontal);
-			} else if (deltaY > deltaX) {
-				iv.setImageResource(R.drawable.vertical);
-			} else {
-				iv.setVisibility(View.INVISIBLE);
-			}
+			
 			
 			}
 		

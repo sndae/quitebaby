@@ -43,13 +43,13 @@ public class MainGameActivity extends Activity {
 		how_to_play.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(v.getContext(),HowToPlayMenu.class);
+				//Intent intent = new Intent(v.getContext(),HowToPlayMenu.class);
 			}
 		});
 		options.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(v.getContext(),OptionsMenu.class);
+				//Intent intent = new Intent(v.getContext(),OptionsMenu.class);
 			}
 		});
 		quit.setOnClickListener(new View.OnClickListener() {
