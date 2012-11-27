@@ -6,6 +6,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -114,6 +115,21 @@ public class SensorActivity extends Activity implements SensorEventListener, IIn
 			
 			}
 		
+	}
+	
+	@Override
+	public boolean onTouchEvent(MotionEvent e) {
+	    // MotionEvent reports input details from the touch screen
+	    // and other input controls. In this case, you are only
+	    // interested in events where the touch position changed.
+
+	    float x = e.getX();
+	    float y = e.getY();
+
+	   
+	    touchX = x;
+	    touchY = y;
+	    return true;
 	}
 	
 public void pollInput(){}
