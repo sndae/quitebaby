@@ -150,11 +150,19 @@ public class PlayState extends BaseGameState {
 	 * The image that represents the happy baby.
 	 */
 	private Drawable happyBaby;
+	
+	/**
+	 * Specifies whether the game should be running.
+	 */
+	private boolean running;
 
+	private GameView view;
+	
 	/**
 	 * Creates a new PlayState with the predesignated values.
 	 */
-	public PlayState() {
+	public PlayState(GameView view) {
+		this.view = view;
 		this.babyCryLevel = INITIAL_CRY_LEVEL;
 		this.score = INITIAL_SCORE;
 		this.timeRemaining = GAME_LENGTH;
@@ -163,6 +171,14 @@ public class PlayState extends BaseGameState {
 		this.happyBaby = Drawable.createFromPath(HAPPY_BABY_IMAGE);
 	}
 
+	@Override
+	public void run(){
+		while(this.running){
+			this.update();
+			this.render();
+		}
+	}
+	
 	/**
 	 * Update game logic. After checking for input from the 
 	 * accelerometer and verifying that there is time remaining in 
@@ -174,59 +190,7 @@ public class PlayState extends BaseGameState {
 	 *            the game container.
 	 */
 	@Override
-	public void update(IGameContainer container) {
-		// =====STEP 1: CHECK INPUT=====
-		// Get input from the game container.
-		IInput input = container.getInput();
-		// Poll y-axis motion from the accelerometer.
-		float accelY = input.getAccelY();
-		// =====STEP 2: CHECK FOR TIME REMAINING=====
-		// If timeRemaining is greater than GAME_END...
-		if (this.timeRemaining > GAME_END) {
-			// =====STEP 3A: ADJUST BABY CRY LEVEL BASED ON INPUT=====
-			// Determine whether the input is "no shake", "weak shake",
-			// or "strong shake", and respond accordingly.
-			// If accelY is "no shake"...
-			if (accelY < WEAK_SHAKE) {
-				// Increase babyCryLevel by CRY_CHANGE_NONE.
-				this.babyCryLevel += CRY_CHANGE_NONE;
-				// If babyCryLevel is greater than BABY_MAX...
-				if (this.babyCryLevel > BABY_MAX){
-					// Set babyCryLevel equal to BABY_MAX.
-					this.babyCryLevel = BABY_MAX;
-				}
-			// Else if accelY is "weak shake"...
-			} else if (accelY > WEAK_SHAKE && accelY < STRONG_SHAKE) {
-				//Decrease babyCryLevel by CRY_CHANGE_WEAK.
-				this.babyCryLevel -= CRY_CHANGE_WEAK;
-				//If babyCryLevel is less than BABY_MIN...
-				if (this.babyCryLevel < BABY_MIN){
-					// Set babyCryLevel equal to BABY_MIN.
-					this.babyCryLevel = BABY_MIN;
-				}
-			// Else if accelY is "strong shake"...
-			} else if (accelY > STRONG_SHAKE) {
-				// Increase babyCryLevel by CRY_CHANGE_STRONG.
-				this.babyCryLevel += CRY_CHANGE_STRONG;
-				//If babyCryLevel is greater than BABY_MAX...
-				if (this.babyCryLevel > BABY_MAX){
-					//Set babyCryLevel equal to BABY_MAX.
-					this.babyCryLevel = BABY_MAX;
-				}
-			}
-			// =====STEP 4A: ADJUST SCORE======
-			// If babyCryLevel is less than or equal to BABY_HAPPY...
-			if (this.babyCryLevel <= BABY_HAPPY) {
-				// Increase score by SCORE_INCREASE.
-				this.score += SCORE_INCREASE;
-			}
-			// =====STEP 5A: DECREASE TIME REMAINING=====
-			// Decrease timeRemaining by FRAME_LENGTH.
-			this.timeRemaining -= FRAME_LENGTH;
-		// Else, there is no time remaining...
-		} else {
-			// =====STEP 3B: END THE GAME=====
-		}
+	public void update() {
 	}
 
 	/**
@@ -237,24 +201,6 @@ public class PlayState extends BaseGameState {
 	 *            the game container.
 	 */
 	@Override
-	public void render(IGameContainer container) {
-		// =====STEP 1: GET RENDERING MECHANISMS=====
-		// Get rendering mechanisms from the game container.
-		IGraphics graphics = container.getGraphics();
-		// =====STEP 2: RENDER BACKGROUND=====
-		// Draw the background.
-		graphics.draw(this.background, BACKGROUND_X, BACKGROUND_Y);
-		// =====STEP 3: RENDER BABY=====
-		// Check whether baby should be crying or happy, and render
-		// the appropriate image.
-		// If the baby is happy...
-		if (this.babyCryLevel <= BABY_HAPPY) {
-			// Draw the happy baby.
-			graphics.draw(this.happyBaby, BABY_X, BABY_Y);
-		// Else, the baby is not happy...
-		} else {
-			// Draw the crying baby.
-			graphics.draw(this.cryingBaby, BABY_X, BABY_Y);
-		}
+	public void render() {
 	}
 }
