@@ -1,5 +1,7 @@
 package com.game.persistence;
 
+
+
 /**
  * BaseGameState forms the basis for the various game states that the game will
  * run. Variables and Constants used by all game states should be defined here.
@@ -12,18 +14,16 @@ package com.game.persistence;
  * @author Dennis Jr
  * 
  */
-public abstract class BaseGameState implements IGameState {
+public abstract class BaseGameState extends Thread implements IGameState{
 	/**
 	 * Does nothing, is overridden by the update methods of completed game
 	 * states.
 	 */
-	public void update(IGameContainer container) {
-	}
+	public abstract void update();
 
 	/**
 	 * Does nothing, is overridden by the render methods of completed game
 	 * states.
 	 */
-	public void render(IGameContainer container) {
-	}
+	public abstract void render();
 }

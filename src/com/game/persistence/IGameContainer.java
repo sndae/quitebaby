@@ -14,39 +14,4 @@ public interface IGameContainer {
 	 *            the game state to be set.
 	 */
 	public void setGameState(IGameState state);
-
-	/**
-	 * Run the game loop, which consists of updating game logic and then
-	 * rendering the updated game environment to the screen.
-	 */
-	public void gameLoop();
-
-	/**
-	 * Get the listeners for the device's input mechanisms.
-	 * 
-	 * @return the input listeners.
-	 */
-	public IInput getInput();
-
-	/**
-	 * Get the mechanisms for rendering objects to the screen.
-	 * 
-	 * @return the rendering mechanisms.
-	 */
-	public IGraphics getGraphics();
-
-	/**
-	 * Set whether the game should be running.
-	 * 
-	 * @param running
-	 *            whether the game should be running.
-	 */
-	public void setRunning(boolean running);
-
-	/**
-	 * Get whether the game should be running.
-	 * 
-	 * @return whether the game should be running.
-	 */
-	public boolean isRunning();
 }

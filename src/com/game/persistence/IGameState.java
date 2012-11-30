@@ -16,7 +16,7 @@ public interface IGameState {
 	 * @param container
 	 *            the game container.
 	 */
-	public void update(IGameContainer container);
+	public void update();
 
 	/**
 	 * Render the updated game environment to the screen. Rendering mechanisms
@@ -25,5 +25,5 @@ public interface IGameState {
 	 * @param container
 	 *            the game container.
 	 */
-	public void render(IGameContainer container);
+	public void render();
 }
