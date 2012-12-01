@@ -68,7 +68,7 @@ public class PlayState extends BaseGameState implements SensorEventListener{
 			this.babyCryLevel += BABY_CRY_CHANGE_STRONG;
 		}
 		if (this.babyCryLevel > BABY_CRY_TARGET){
-			this.view.babyHapppy = false;
+			this.view.babyHappy = false;
 		} else if (this.babyCryLevel <= BABY_CRY_TARGET){
 			this.view.babyHappy = true;
 		}
