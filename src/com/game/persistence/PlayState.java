@@ -1,10 +1,12 @@
 package com.game.persistence;
 
 import android.hardware.Sensor;
+
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 
 import com.game.integration.SensorListener;
+import com.game.ui.Picture;
 
 /**
  * PlayState represents the actual gameplay state of the game.
@@ -32,13 +34,14 @@ public class PlayState extends BaseGameState implements SensorEventListener{
 	
 	private boolean running;
 
-	private GameView view;
+	private Picture view;
 	
 	private SensorListener input;
 	
-	public PlayState(GameView view, SensorListener input) {
+	public PlayState(Picture view, SensorListener input) {
 		this.view = view;
 		this.input = input;
+		this.running = false;
 		this.babyCryLevel = BABY_CRY_START;
 	}
 
