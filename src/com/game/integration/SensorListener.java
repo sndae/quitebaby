@@ -18,19 +18,14 @@ import com.game.persistence.IInput;
  * @author Kenny
  */
 
-public class SensorListener implements SensorEventListener, IInput {
+public class SensorListener implements SensorEventListener {
 	private SensorManager mSensorManager;
 	private Sensor mAccelerometer;
 	private float accelX;
 	private float accelY;
 	private float accelZ;
-	private float touchX;
-	private float touchY;
 	private boolean mInitialized;
 	private final float NOISE = (float) 2.0;
-
-
-
 
 	/**
 	 * method to get access sensor activity
@@ -73,12 +68,7 @@ public class SensorListener implements SensorEventListener, IInput {
 	 */
 
 	public void onSensorChanged(SensorEvent event) {
-		
-		
 
-		
-		
-		
 		float x = event.values[0];
 		float y = event.values[1];
 		float z = event.values[2];
@@ -99,52 +89,7 @@ public class SensorListener implements SensorEventListener, IInput {
 			accelX = x;
 			accelY = y;
 			accelZ = z;
-			
-			
 			}
 		
-	}
-	
-	@Override
-	public boolean onTouchEvent(MotionEvent e) {
-	    // MotionEvent reports input details from the touch screen
-	    // and other input controls. In this case, you are only
-	    // interested in events where the touch position changed.
-
-	    float x = e.getX();
-	    float y = e.getY();
-
-	   
-	    touchX = x;
-	    touchY = y;
-	    return true;
-	}
-	
-public void pollInput(){}
-	
-
-	public float getAccelX(){
-		
-		
-		return accelX;}
-
-
-	public float getAccelY(){
-		return accelY;}
-
-	
-	public float getAccelZ(){
-		
-		return accelZ;}
-
-	
-	public float getTouchX(){
-		
-		return touchX ;
-	}
-
-	
-	public float getTouchY(){
-		return touchY;
 	}
 }
