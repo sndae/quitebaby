@@ -10,12 +10,12 @@ import android.view.SurfaceView;
  * @author Dennis Jr
  * 
  */
-public class GameView extends SurfaceView implements IGameContainer {
+public class GameView extends SurfaceView{
 	
 	/**
 	 * The currently running game state.
 	 */
-	private IGameState state;
+	private BaseGameState state;
 
 	/**
 	 * Creates a new GameContainer with null input, graphics, and state, and is
@@ -38,7 +38,7 @@ public class GameView extends SurfaceView implements IGameContainer {
 	 * @param state
 	 *            the first game state to be run.
 	 */
-	public GameView(Context context, IGameState state) {
+	public GameView(Context context, BaseGameState state) {
 		super(context);
 		this.state = state;
 	}
@@ -47,7 +47,7 @@ public class GameView extends SurfaceView implements IGameContainer {
 	 * Sets the currently running game state. The new state will take effect on
 	 * the next cycle of the game loop.
 	 */
-	public void setGameState(IGameState state) {
+	public void setGameState(BaseGameState state) {
 		this.state = state;
 	}
 
@@ -56,7 +56,7 @@ public class GameView extends SurfaceView implements IGameContainer {
 	 * 
 	 * @return the currently running game state.
 	 */
-	public IGameState getGameState() {
+	public BaseGameState getGameState() {
 		return this.state;
 	}
 }
