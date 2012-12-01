@@ -42,9 +42,10 @@ public class PlayState extends BaseGameState implements SensorEventListener{
 	
 	private SensorListener input;
 	
-	public PlayState(Picture view, SensorListener input) {
+	public PlayState(Picture view, SurfaceHolder holder, SensorListener input) {
 		this.view = view;
 		this.input = input;
+		this.holder = holder;
 		this.running = false;
 		this.babyCryLevel = BABY_CRY_START;
 	}
@@ -87,13 +88,17 @@ public class PlayState extends BaseGameState implements SensorEventListener{
 		}
 	}
 
-	@Override
+	
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
 		this.input.onAccuracyChanged(sensor, accuracy);
 	}
 
-	@Override
+	
 	public void onSensorChanged(SensorEvent event) {
 		this.input.onSensorChanged(event);
+	}
+	
+	public void setRunning(boolean running){
+		this.running = running;
 	}
 }

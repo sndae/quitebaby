@@ -1,5 +1,8 @@
 package com.game.ui;
 
+import com.game.integration.SensorListener;
+import com.game.persistence.PlayState;
+
 import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -9,14 +12,15 @@ import android.view.SurfaceView;
 
 public class Picture extends SurfaceView implements SurfaceHolder.Callback{
 	public boolean babyHappy;
-	private MainThread thread;
+	private PlayState thread;
 		public Picture(Context context){
 			super(context);
 		//intercept events
 		getHolder().addCallback(this);
 		//create thread
-		thread = new MainThread(getHolder(),this);
+		thread = new PlayState(this, getHolder(), new SensorListener(context));
 		setFocusable(true);
+		this.babyHappy = false;
 		}
 		//@Override
 		public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
@@ -41,7 +45,13 @@ public class Picture extends SurfaceView implements SurfaceHolder.Callback{
 	    } 
 		@Override
 		public void onDraw(Canvas canvas){
-			canvas.drawBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.baby_happy), 10, 10, null);
+			
+			if(babyHappy){
+				canvas.drawBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.baby_happy), 10, 10, null);
+			}
+			else {
+				canvas.drawBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.baby_unhappy), 10, 10, null);
+			}
 		}
 }	
     
