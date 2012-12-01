@@ -1,5 +1,7 @@
 package com.game.persistence;
 
+import android.view.MotionEvent;
+
 /**
  * An IInput holds and manages the listeners for the device's various input
  * mechanisms.
@@ -47,4 +49,6 @@ public interface IInput {
 	 * @return the Y value of the touch screen.
 	 */
 	public float getTouchY();
+
+	boolean onTouchEvent(MotionEvent e);
 }

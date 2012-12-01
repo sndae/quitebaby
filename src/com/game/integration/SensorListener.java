@@ -1,19 +1,14 @@
 package com.game.integration;
-import android.app.Activity;
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.os.Bundle;
 import android.view.MotionEvent;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+
 
 
 import com.game.persistence.IInput;
-import com.game.ui.R;
 
 /**
  * This class functions as an event listener for the accelerometer on the
@@ -23,7 +18,7 @@ import com.game.ui.R;
  * @author Kenny
  */
 
-public class SensorActivity extends Activity implements SensorEventListener, IInput {
+public class SensorListener implements SensorEventListener, IInput {
 	private SensorManager mSensorManager;
 	private Sensor mAccelerometer;
 	private float accelX;
@@ -34,15 +29,7 @@ public class SensorActivity extends Activity implements SensorEventListener, IIn
 	private boolean mInitialized;
 	private final float NOISE = (float) 2.0;
 
-	 @Override
-	    public void onCreate(Bundle savedInstanceState) {
-	        super.onCreate(savedInstanceState);
-	        setContentView(R.layout.main);
-	        mInitialized = false;
-	        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-	        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-	        mSensorManager.registerListener(this, mAccelerometer , SensorManager.SENSOR_DELAY_NORMAL);
-	    }
+
 
 
 	/**
@@ -51,10 +38,11 @@ public class SensorActivity extends Activity implements SensorEventListener, IIn
 	 * @return sensor service
 	 * @return accelerometer sensor
 	 */
-	public SensorActivity() {
-		//mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-		//mAccelerometer = mSensorManager
-				//.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+	public SensorListener(Context context) {
+		mInitialized = false;
+        mSensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
+        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        mSensorManager.registerListener(this, mAccelerometer , SensorManager.SENSOR_DELAY_NORMAL);
 	}
 
 	/**
@@ -62,7 +50,7 @@ public class SensorActivity extends Activity implements SensorEventListener, IIn
 	 */
 
 	protected void onResume() {
-        super.onResume();
+       
         mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
 	}
 
@@ -70,7 +58,7 @@ public class SensorActivity extends Activity implements SensorEventListener, IIn
 	 * Method to unregister the listener onPause of activity
 	 */
 	protected void onPause() {
-		super.onPause();
+		
 		mSensorManager.unregisterListener(this);
 	}
 
