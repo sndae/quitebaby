@@ -14,7 +14,7 @@ package com.game.persistence;
  * @author Dennis Jr
  * 
  */
-public abstract class BaseGameState extends Thread implements IGameState{
+public abstract class BaseGameState extends Thread{
 	/**
 	 * Does nothing, is overridden by the update methods of completed game
 	 * states.
