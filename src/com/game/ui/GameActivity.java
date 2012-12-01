@@ -19,10 +19,11 @@ public class GameActivity extends Activity {
 	private Picture picture;
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        picture = new Picture(this);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        
         setContentView(new Picture(this));
         //Get rid of the application title bar.
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        
         
         }
 	
