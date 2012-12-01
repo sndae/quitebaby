@@ -1,9 +1,11 @@
 package com.game.persistence;
 
+import android.graphics.Canvas;
 import android.hardware.Sensor;
 
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
+import android.view.SurfaceHolder;
 
 import com.game.integration.SensorListener;
 import com.game.ui.Picture;
@@ -35,6 +37,8 @@ public class PlayState extends BaseGameState implements SensorEventListener{
 	private boolean running;
 
 	private Picture view;
+	
+	private SurfaceHolder holder;
 	
 	private SensorListener input;
 	
@@ -72,6 +76,8 @@ public class PlayState extends BaseGameState implements SensorEventListener{
 		} else if (this.babyCryLevel <= BABY_CRY_TARGET){
 			//Draw Happy Baby
 		}
+		Canvas canvas = this.holder.lockCanvas();
+		this.view.onDraw(canvas);
 	}
 
 	@Override
