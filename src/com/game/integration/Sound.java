@@ -19,4 +19,6 @@ public class Sound {
 	}
 	 
 	public void StopSound(){mp.release();}
+	
+	public void PauseSound(){mp.pause();}
 }
