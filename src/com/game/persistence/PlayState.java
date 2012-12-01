@@ -18,7 +18,7 @@ import com.game.ui.Picture;
  */
 public class PlayState extends BaseGameState implements SensorEventListener{
 
-	private static final float WEAK_SHAKE_THRESHOLD = 10;
+	private static final float WEAK_SHAKE_THRESHOLD = 1;
 	
 	private static final float STRONG_SHAKE_THRESHOLD = 9999;
 	
