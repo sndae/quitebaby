@@ -67,17 +67,24 @@ public class PlayState extends BaseGameState implements SensorEventListener{
 		} else if (accelY >= STRONG_SHAKE_THRESHOLD){
 			this.babyCryLevel += BABY_CRY_CHANGE_STRONG;
 		}
+		if (this.babyCryLevel > BABY_CRY_TARGET){
+			this.view.babyHapppy = false;
+		} else if (this.babyCryLevel <= BABY_CRY_TARGET){
+			this.view.babyHappy = true;
+		}
 	}
 
 	@Override
 	public void render() {
-		if (this.babyCryLevel > BABY_CRY_TARGET){
-			//Draw Crying Baby
-		} else if (this.babyCryLevel <= BABY_CRY_TARGET){
-			//Draw Happy Baby
+		Canvas canvas = null;
+		try {
+			canvas = this.holder.lockCanvas();
+			this.view.onDraw(canvas);
+		} finally {
+			if (canvas != null){
+				this.holder.unlockCanvasAndPost(canvas);
+			}
 		}
-		Canvas canvas = this.holder.lockCanvas();
-		this.view.onDraw(canvas);
 	}
 
 	@Override
