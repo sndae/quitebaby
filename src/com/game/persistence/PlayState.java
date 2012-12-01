@@ -1,5 +1,9 @@
 package com.game.persistence;
 
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+
 import com.game.integration.SensorListener;
 
 /**
@@ -8,8 +12,24 @@ import com.game.integration.SensorListener;
  * @author Dennis Jr
  * 
  */
-public class PlayState extends BaseGameState {
+public class PlayState extends BaseGameState implements SensorEventListener{
 
+	private static final float WEAK_SHAKE_THRESHOLD = 0;
+	
+	private static final float STRONG_SHAKE_THRESHOLD = 0;
+	
+	private static final int BABY_CRY_START = 0;
+	
+	private static final int BABY_CRY_TARGET = 0;
+	
+	private static final int BABY_CRY_CHANGE_NO = 0;
+	
+	private static final int BABY_CRY_CHANGE_WEAK = 0;
+	
+	private static final int BABY_CRY_CHANGE_STRONG = 0;
+	
+	private int babyCryLevel;
+	
 	private boolean running;
 
 	private GameView view;
@@ -19,6 +39,7 @@ public class PlayState extends BaseGameState {
 	public PlayState(GameView view, SensorListener input) {
 		this.view = view;
 		this.input = input;
+		this.babyCryLevel = BABY_CRY_START;
 	}
 
 	@Override
@@ -31,10 +52,32 @@ public class PlayState extends BaseGameState {
 	
 	@Override
 	public void update() {
-		
+		float accelY = this.input.getAccelY();
+		if (accelY < WEAK_SHAKE_THRESHOLD){
+			this.babyCryLevel += BABY_CRY_CHANGE_NO;
+		} else if (accelY >= WEAK_SHAKE_THRESHOLD && accelY < STRONG_SHAKE_THRESHOLD){
+			this.babyCryLevel += BABY_CRY_CHANGE_WEAK;
+		} else if (accelY >= STRONG_SHAKE_THRESHOLD){
+			this.babyCryLevel += BABY_CRY_CHANGE_STRONG;
+		}
 	}
 
 	@Override
 	public void render() {
+		if (this.babyCryLevel > BABY_CRY_TARGET){
+			//Draw Crying Baby
+		} else if (this.babyCryLevel <= BABY_CRY_TARGET){
+			//Draw Happy Baby
+		}
+	}
+
+	@Override
+	public void onAccuracyChanged(Sensor sensor, int accuracy) {
+		this.input.onAccuracyChanged(sensor, accuracy);
+	}
+
+	@Override
+	public void onSensorChanged(SensorEvent event) {
+		this.input.onSensorChanged(event);
 	}
 }

@@ -4,11 +4,6 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.view.MotionEvent;
-
-
-
-import com.game.persistence.IInput;
 
 /**
  * This class functions as an event listener for the accelerometer on the
@@ -91,5 +86,9 @@ public class SensorListener implements SensorEventListener {
 			accelZ = z;
 			}
 		
+	}
+	
+	public float getAccelY(){
+		return this.accelY;
 	}
 }
