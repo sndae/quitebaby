@@ -18,7 +18,7 @@ import com.game.ui.Picture;
  */
 public class PlayState extends BaseGameState implements SensorEventListener{
 
-	private static final float WEAK_SHAKE_THRESHOLD = 1;
+	private static final float WEAK_SHAKE_THRESHOLD = 10;
 	
 	private static final float STRONG_SHAKE_THRESHOLD = 9999;
 	
@@ -33,6 +33,8 @@ public class PlayState extends BaseGameState implements SensorEventListener{
 	private static final int BABY_CRY_CHANGE_STRONG = 1;
 	
 	private static final int BABY_CRY_MAX = 1;
+	
+	private static final int BABY_CRY_MIN = 0;
 	
 	private int babyCryLevel;
 	
@@ -72,6 +74,8 @@ public class PlayState extends BaseGameState implements SensorEventListener{
 		}
 		if (this.babyCryLevel > BABY_CRY_MAX){
 			this.babyCryLevel = BABY_CRY_MAX;
+		} else if (this.babyCryLevel < BABY_CRY_MIN){
+			this.babyCryLevel = BABY_CRY_MIN;
 		}
 		if (this.babyCryLevel > BABY_CRY_TARGET){
 			this.view.babyHappy = false;
