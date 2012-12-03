@@ -10,19 +10,22 @@ public class Sound {
 
 	public Sound(Context context) {
 		this.mp = MediaPlayer.create(context, R.raw.baby);
+	
 	}
 
 	public void PlaySound(Context context) {
 		if (!this.mp.isPlaying()) {
-			mp.reset();
+			
 			mp.start();
 		}
 	}
 
 	public void StopSound() {
 		if (this.mp.isPlaying()) {
-			mp.release();
 			mp.pause();
+			
+	
+			
 		}
 	}
 
