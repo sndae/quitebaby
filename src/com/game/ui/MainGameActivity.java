@@ -18,8 +18,6 @@ public class MainGameActivity extends Activity {
 		setContentView(R.layout.main);
 			
 		new_game = (Button) findViewById(R.id.newGameButton);
-		//resume_game = (Button) findViewById(R.id.resumeGameButton);
-		high_scores = (Button) findViewById(R.id.highScoresButton);
 		how_to_play = (Button) findViewById(R.id.howToPlayButton);
 		options = (Button) findViewById(R.id.optionsButton);
 		quit = (Button) findViewById(R.id.quitButton);
@@ -31,17 +29,6 @@ public class MainGameActivity extends Activity {
 			}
 		});
 			
-		
-		//resume_game.setOnClickListener(new View.OnClickListener() {
-			//public void onClick(View v) {
-				// TODO Auto-generated method stub
-			//}
-		//});
-		high_scores.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				// TODO Load high scores state
-			}
-		});
 		how_to_play.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				loadHowToPlayMenu();
@@ -82,9 +69,5 @@ public class MainGameActivity extends Activity {
 		}
 		
 	
-		@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.activity_main_game, menu);
-		return true;
-	}
+		
 }
