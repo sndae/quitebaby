@@ -13,7 +13,7 @@ import android.hardware.SensorManager;
  * @author Kenny
  */
 
-public class SensorListener implements SensorEventListener {
+public class SensorListener implements SensorEventListener, IInput {
 	private SensorManager mSensorManager;
 	private Sensor mAccelerometer;
 	private float accelX;
@@ -93,6 +93,7 @@ public class SensorListener implements SensorEventListener {
 	 * Get method to pull Y value from Sensor
 	 * @return accelY Accelerometer value
 	 */
+	@Override
 	public float getAccelY(){
 		return this.accelY;
 	}

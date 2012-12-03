@@ -8,8 +8,11 @@ import android.hardware.SensorEventListener;
 import android.util.Log;
 import android.view.SurfaceHolder;
 
+import com.game.integration.IAudio;
+import com.game.integration.IInput;
 import com.game.integration.SensorListener;
 import com.game.integration.Sound;
+import com.game.ui.IGameView;
 import com.game.ui.Picture;
 
 /**
@@ -110,7 +113,7 @@ public class PlayState extends BaseGameState implements SensorEventListener {
 	/**
 	 * The Android View.
 	 */
-	public Picture view;
+	public IGameView view;
 
 	/**
 	 * The SurfaceHolder.
@@ -120,12 +123,12 @@ public class PlayState extends BaseGameState implements SensorEventListener {
 	/**
 	 * The mechanism for reading input from the accelerometer.
 	 */
-	private SensorListener input;
+	private IInput input;
 
 	/**
 	 * The baby's crying sound.
 	 */
-	public Sound sound;
+	public IAudio sound;
 
 	/**
 	 * Creates a new PlayState with the specified View, SurfaceHolder, and 
@@ -134,7 +137,7 @@ public class PlayState extends BaseGameState implements SensorEventListener {
 	 * @param holder the SurfaceHolder.
 	 * @param input the SensorListener.
 	 */
-	public PlayState(Picture view, SurfaceHolder holder, SensorListener input) {
+	public PlayState(IGameView view, SurfaceHolder holder, IInput input) {
 		this.view = view;
 		this.input = input;
 		this.holder = holder;
@@ -192,10 +195,10 @@ public class PlayState extends BaseGameState implements SensorEventListener {
 				this.babyCryLevel = BABY_CRY_MIN;
 			}
 			if (this.babyCryLevel > BABY_CRY_TARGET) {
-				this.view.babyHappy = false;
+				this.view.setBabyHappy(false);
 				this.sound.PlaySound(this.view.getContext());
 			} else if (this.babyCryLevel <= BABY_CRY_TARGET) {
-				this.view.babyHappy = true;
+				this.view.setBabyHappy(true);
 				this.sound.StopSound();
 				this.babyHappyTime = BABY_HAPPY_DURATION;
 			}
