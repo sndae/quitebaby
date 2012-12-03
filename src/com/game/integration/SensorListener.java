@@ -60,19 +60,20 @@ public class SensorListener implements SensorEventListener {
 
 	/**
 	 * method for when sensor changes
+	 * sets values for X, Y, Z for accelerometer
 	 */
 
 	public void onSensorChanged(SensorEvent event) {
-
+		//Sets X Y and Z equal to accelerometer values.
 		float x = event.values[0];
 		float y = event.values[1];
 		float z = event.values[2];
 		
 		if (!mInitialized) {
+			//passes X, Y and Z to accel variables.
 			accelX = x;
 			accelY = y;
 			accelZ = z;
-			
 			mInitialized = true;
 			} else {
 			float deltaX = Math.abs(accelX - x);
@@ -88,7 +89,27 @@ public class SensorListener implements SensorEventListener {
 		
 	}
 	
+	/**
+	 * Get method to pull Y value from Sensor
+	 * @return accelY Accelerometer value
+	 */
 	public float getAccelY(){
 		return this.accelY;
+	}
+	
+	/**
+	 * Get method to pull Y value from Sensor
+	 * @return accelX Accelerometer value
+	 */
+	public float getAccelX(){
+		return this.accelX;
+	}
+	
+	/**
+	 * Get method to pull Y value from Sensor
+	 * @return accelZ Accelerometer value
+	 */
+	public float getAccelZ(){
+		return this.accelZ;
 	}
 }
