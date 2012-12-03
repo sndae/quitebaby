@@ -28,23 +28,4 @@ public class GameActivity extends Activity {
         
         
         }
-	
-	@Override
-	public void onBackPressed(){
-		boolean retry = true;
-		while (retry) {
-			try {
-				PlayState thread = this.picture.thread;
-				thread.sound.StopSound();
-				thread.sound.mp.release();
-				thread.setRunning(false);
-				thread.join();
-				retry = false;
-			} catch (InterruptedException e) {
-				Log.d(TAG, e.getMessage());
-			}
-		}
-	}
-	
-	
 }
