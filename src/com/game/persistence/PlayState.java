@@ -204,6 +204,9 @@ public class PlayState extends BaseGameState implements SensorEventListener {
 			}
 		} else {
 			this.babyHappyTime -= 1;
+			if (this.babyHappyTime <= 0){
+				this.babyCryLevel = BABY_CRY_START;
+			}
 		}
 	}
 
