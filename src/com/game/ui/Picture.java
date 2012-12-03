@@ -43,6 +43,7 @@ public class Picture extends SurfaceView implements SurfaceHolder.Callback {
 		while (retry) {
 			try {
 				thread.setRunning(false);
+				thread.view = null;
 				thread.join();
 				retry = false;
 			} catch (InterruptedException e) {

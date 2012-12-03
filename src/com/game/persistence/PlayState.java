@@ -50,7 +50,7 @@ public class PlayState extends BaseGameState implements SensorEventListener {
 
 	private boolean running;
 
-	private Picture view;
+	public Picture view;
 
 	private SurfaceHolder holder;
 
