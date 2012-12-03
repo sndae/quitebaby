@@ -13,7 +13,19 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:text="How To Play the Game:"
-        android:textSize="40sp"
+        android:textSize="20sp"
      />
+    <TextView
+        android:id="@+id/instructionsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Play the game by gently shaking the phone. \n If you shake too hard, the baby will become unhappy and cry. 
+        \n Not shaking the baby enough will not soothe your baby either."
+        android:textSize="15sp"
+     />
+    
 
 </LinearLayout>
