@@ -14,7 +14,7 @@ import android.view.SurfaceView;
 public class Picture extends SurfaceView implements SurfaceHolder.Callback {
 	private static final String TAG = Picture.class.getSimpleName();
 	public boolean babyHappy;
-	private PlayState thread;
+	public PlayState thread;
 
 	public Picture(Context context) {
 		super(context);
@@ -39,18 +39,7 @@ public class Picture extends SurfaceView implements SurfaceHolder.Callback {
 
 	// @Override
 	public void surfaceDestroyed(SurfaceHolder holder) {
-		boolean retry = true;
-		while (retry) {
-			try {
-				thread.sound.StopSound();
-				thread.sound.mp.release();
-				thread.setRunning(false);
-				thread.join();
-				retry = false;
-			} catch (InterruptedException e) {
-				Log.d(TAG, e.getMessage());
-			}
-		}
+		
 	}
 
 	@Override
