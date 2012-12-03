@@ -15,29 +15,34 @@ import android.view.SurfaceView;
 import android.view.Window;
 import android.view.WindowManager;
 
-
 public class GameActivity extends Activity {
 	private static final String TAG = GameActivity.class.getSimpleName();
 	private Picture picture;
+
 	public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        picture = new Picture(this);
-        setContentView(picture);
-        //Get rid of the application title bar.
-        }
-	
-	public void onDestroy(){
+		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		picture = new Picture(this);
+		setContentView(picture);
+		// Get rid of the application title bar.
 	}
-	
+
+	public void onDestroy() {
+	}
+
 	@Override
-	public void onBackPressed(){
-		PlayState thread = this.picture.thread;
-		thread.setRunning(false);
-		thread.sound.StopSound();
-		thread.sound.mp.release();
-		Intent mainMenu = new Intent(this, MainGameActivity.class);
-		super.onBackPressed();
-		startActivity(mainMenu);
+	public void onBackPressed() {
+		try {
+			PlayState thread = this.picture.thread;
+			thread.join();
+			thread.setRunning(false);
+			thread.sound.StopSound();
+			thread.sound.mp.release();
+			Intent mainMenu = new Intent(this, MainGameActivity.class);
+			super.onBackPressed();
+			startActivity(mainMenu);
+		} catch (InterruptedException e) {
+			Log.d(TAG, e.getMessage());
+		}
 	}
 }
