@@ -63,7 +63,7 @@ public class PlayState extends BaseGameState implements SensorEventListener {
 		this.input = input;
 		this.holder = holder;
 		this.running = false;
-		this.sound = new Sound();
+		this.sound = new Sound(this.view.getContext());
 		this.babyCryLevel = BABY_CRY_START;
 	}
 
@@ -109,14 +109,10 @@ public class PlayState extends BaseGameState implements SensorEventListener {
 		}
 		if (this.babyCryLevel > BABY_CRY_TARGET) {
 			this.view.babyHappy = false;
-			if (!this.sound.mp.isPlaying()) {
-				this.sound.PlaySound(this.view.getContext());
-			}
+			this.sound.PlaySound(this.view.getContext());
 		} else if (this.babyCryLevel <= BABY_CRY_TARGET) {
 			this.view.babyHappy = true;
-			if (this.sound.mp.isPlaying()) {
-				this.sound.StopSound();
-			}
+			this.sound.StopSound();
 		}
 	}
 
