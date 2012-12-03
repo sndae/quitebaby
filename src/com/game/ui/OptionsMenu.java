@@ -28,18 +28,13 @@ public class OptionsMenu extends Activity{
 		difficulty = (Spinner)findViewById(R.id.easynormalhard);
 		save_options = (Button)findViewById(R.id.saveOptionsButton);
 		cancel_options = (Button)findViewById(R.id.cancelOptionsButton);
-		
-		
-		
-		
-		
-		
+				
 		save_options.setOnClickListener(new View.OnClickListener() {
 		public void onClick(View v) {
 			difficultyValue = difficulty.getSelectedItem().toString();
 			saveBabyName();
 			alert.show();
-			android.os.SystemClock.sleep(3000);
+			android.os.SystemClock.sleep(500);
 			finish();
 		    }									
 		});
