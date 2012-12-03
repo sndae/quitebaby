@@ -119,14 +119,16 @@ public class PlayState extends BaseGameState implements SensorEventListener {
 	@Override
 	public void render() {
 		Canvas canvas = null;
-		try {
-			canvas = this.holder.lockCanvas();
-			this.view.onDraw(canvas);
-		} catch (Exception e) {
-			Log.d(TAG, e.getMessage());
-		} finally {
-			if (canvas != null) {
-				this.holder.unlockCanvasAndPost(canvas);
+		if (this.view != null) {
+			try {
+				canvas = this.holder.lockCanvas();
+				this.view.onDraw(canvas);
+			} catch (Exception e) {
+				Log.d(TAG, e.getMessage());
+			} finally {
+				if (canvas != null) {
+					this.holder.unlockCanvasAndPost(canvas);
+				}
 			}
 		}
 	}
