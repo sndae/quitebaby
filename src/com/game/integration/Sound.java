@@ -8,7 +8,7 @@ import android.media.MediaPlayer;
 
 
 public class Sound {
-	MediaPlayer mp;
+	public MediaPlayer mp;
 	
 	
 	public void PlaySound(Context context){
