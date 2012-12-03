@@ -12,7 +12,7 @@ import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-public class Picture extends SurfaceView implements SurfaceHolder.Callback {
+public class Picture extends SurfaceView implements SurfaceHolder.Callback, IGameView {
 	private static final String TAG = Picture.class.getSimpleName();
 	public boolean babyHappy;
 	public IGameThread thread;
@@ -53,5 +53,13 @@ public class Picture extends SurfaceView implements SurfaceHolder.Callback {
 			canvas.drawBitmap(BitmapFactory.decodeResource(getResources(),
 					R.drawable.baby_unhappy), 10, 10, null);
 		}
+	}
+	
+	public boolean isBabyHappy(){
+		return this.babyHappy;
+	}
+	
+	public void setBabyHappy(boolean babyHappy){
+		this.babyHappy = babyHappy;
 	}
 }

@@ -5,7 +5,7 @@ import com.game.ui.R;
 import android.content.Context;
 import android.media.MediaPlayer;
 
-public class Sound {
+public class Sound implements IAudio{
 	//initialize global media player value 
 	public MediaPlayer mp;
 
