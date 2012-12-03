@@ -25,7 +25,19 @@ public class GameActivity extends Activity {
         
         setContentView(new Picture(this));
         //Get rid of the application title bar.
-        
-        
         }
+	
+	public void onDestroy(){
+	}
+	
+	@Override
+	public void onBackPressed(){
+		PlayState thread = this.picture.thread;
+		thread.setRunning(false);
+		thread.sound.StopSound();
+		thread.sound.mp.release();
+		Intent mainMenu = new Intent(this, MainGameActivity.class);
+		super.onBackPressed();
+		startActivity(mainMenu);
+	}
 }
