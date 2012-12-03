@@ -42,6 +42,8 @@ public class Picture extends SurfaceView implements SurfaceHolder.Callback {
 		boolean retry = true;
 		while (retry) {
 			try {
+				thread.sound.StopSound();
+				thread.sound.mp.release();
 				thread.setRunning(false);
 				thread.join();
 				retry = false;
