@@ -14,11 +14,12 @@ public class Sound {
 	public void PlaySound(Context context){
 		
 		mp = MediaPlayer.create(context,R.raw.baby);
+		mp.reset();
 		mp.start();
 	
 	}
 	 
-	public void StopSound(){mp.release();}
+	public void StopSound(){mp.release(); mp.pause();}
 	
-	public void PauseSound(){mp.pause();}
+	public void PauseSound(){}
 }
