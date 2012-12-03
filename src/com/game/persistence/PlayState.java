@@ -56,7 +56,7 @@ public class PlayState extends BaseGameState implements SensorEventListener {
 
 	private SensorListener input;
 
-	private Sound sound;
+	public Sound sound;
 
 	public PlayState(Picture view, SurfaceHolder holder, SensorListener input) {
 		this.view = view;
@@ -118,16 +118,9 @@ public class PlayState extends BaseGameState implements SensorEventListener {
 
 	@Override
 	public void render() {
-		Canvas canvas = null;
-		if (this.view != null) {
-			try {
-				canvas = this.holder.lockCanvas();
-				this.view.onDraw(canvas);
-				this.holder.unlockCanvasAndPost(canvas);
-			} catch (Exception e) {
-				Log.d(TAG, e.getMessage());
-			}
-		}
+		Canvas canvas = this.holder.lockCanvas();
+		this.view.onDraw(canvas);
+		this.holder.unlockCanvasAndPost(canvas);
 	}
 
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
