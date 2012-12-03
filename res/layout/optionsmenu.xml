@@ -34,7 +34,7 @@
        android:layout_marginTop="50dp"
        android:ems="10"
        android:hint="Baby's Name"
-       android:inputType="textMultiLine" >
+       android:singleLine="true" >
   </EditText>
   
    <Button
