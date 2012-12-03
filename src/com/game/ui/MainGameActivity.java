@@ -11,7 +11,7 @@ import android.widget.Button;
 
 public class MainGameActivity extends Activity {
 	
-	private Button new_game, resume_game, high_scores, how_to_play, options, quit;
+	private Button new_game, how_to_play, options, quit;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -32,18 +32,18 @@ public class MainGameActivity extends Activity {
 		how_to_play.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				loadHowToPlayMenu();
+				finish();
 			}
 		});
 		//calls options menu method
 		options.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				loadOptionsMenu();
-			}
+		}
 		});
 		//exits the game
 		quit.setOnClickListener(new View.OnClickListener() {
 		public void onClick(View v) {
-			finish();
 			System.exit(0);
 			}
 		});
@@ -61,6 +61,7 @@ public class MainGameActivity extends Activity {
 		private void loadOptionsMenu() {
 		Intent optionsMenu = new Intent(this, OptionsMenu.class);
 		startActivity(optionsMenu);
+		
 		}
 		//method to load the directions
 		private void loadHowToPlayMenu(){

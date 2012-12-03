@@ -37,6 +37,7 @@ public class OptionsMenu extends Activity{
 		//calls cancel options method
 			public void onClick(View v) {
 				cancelOptionsMethod();
+				finish();
 		
 			}});
 		}
@@ -47,6 +48,7 @@ public class OptionsMenu extends Activity{
 		private void cancelOptionsMethod() {
 			Intent cancelOptionsMenu = new Intent(this, MainGameActivity.class);
 			startActivity(cancelOptionsMenu);	
+			
 			}
 		}
 
