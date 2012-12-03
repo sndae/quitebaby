@@ -46,7 +46,7 @@ public class PlayState extends BaseGameState implements SensorEventListener {
 	/**
 	 * Minimum strength of a weak shake.
 	 */
-	private static final float WEAK_SHAKE_THRESHOLD = 5;
+	private static final float WEAK_SHAKE_THRESHOLD = 1;
 
 	/**
 	 * Minimum strength of a strong shake.
@@ -81,7 +81,7 @@ public class PlayState extends BaseGameState implements SensorEventListener {
 	/**
 	 * Maximum value of babyCryLevel.
 	 */
-	private static final int BABY_CRY_MAX = 3 * FRAMES_PER_SECOND;
+	private static final int BABY_CRY_MAX = 1;
 
 	/**
 	 * Mimimum value of babyCryLevel.
