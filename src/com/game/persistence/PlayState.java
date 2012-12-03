@@ -21,8 +21,14 @@ import com.game.ui.Picture;
 public class PlayState extends BaseGameState implements SensorEventListener {
 
 	private static final String TAG = PlayState.class.getSimpleName();
+	
+	private static final int FRAMES_PER_SECOND = 50;
 
-	private static final float WEAK_SHAKE_THRESHOLD = 1;
+	private static final int FRAME_PERIOD = 1000 / FRAMES_PER_SECOND;
+
+	private static final int MAX_FRAME_SKIPS = 5;
+
+	private static final float WEAK_SHAKE_THRESHOLD = 5;
 
 	private static final float STRONG_SHAKE_THRESHOLD = 9999;
 
@@ -36,17 +42,15 @@ public class PlayState extends BaseGameState implements SensorEventListener {
 
 	private static final int BABY_CRY_CHANGE_STRONG = 1;
 
-	private static final int BABY_CRY_MAX = 1;
+	private static final int BABY_CRY_MAX = 3 * FRAMES_PER_SECOND;
 
 	private static final int BABY_CRY_MIN = 0;
 
-	private static final int FRAMES_PER_SECOND = 50;
-
-	private static final int FRAME_PERIOD = 1000 / FRAMES_PER_SECOND;
-
-	private static final int MAX_FRAME_SKIPS = 5;
+	private static final int BABY_HAPPY_DURATION = 5 * FRAMES_PER_SECOND;
 
 	private int babyCryLevel;
+
+	private int babyHappyTime;
 
 	private boolean running;
 
@@ -65,6 +69,7 @@ public class PlayState extends BaseGameState implements SensorEventListener {
 		this.running = false;
 		this.sound = new Sound(this.view.getContext());
 		this.babyCryLevel = BABY_CRY_START;
+		this.babyHappyTime = 0;
 	}
 
 	@Override
@@ -93,26 +98,31 @@ public class PlayState extends BaseGameState implements SensorEventListener {
 
 	@Override
 	public void update() {
-		float accelY = this.input.getAccelY();
-		if (accelY < WEAK_SHAKE_THRESHOLD) {
-			this.babyCryLevel += BABY_CRY_CHANGE_NO;
-		} else if (accelY >= WEAK_SHAKE_THRESHOLD
-				&& accelY < STRONG_SHAKE_THRESHOLD) {
-			this.babyCryLevel += BABY_CRY_CHANGE_WEAK;
-		} else if (accelY >= STRONG_SHAKE_THRESHOLD) {
-			this.babyCryLevel += BABY_CRY_CHANGE_STRONG;
-		}
-		if (this.babyCryLevel > BABY_CRY_MAX) {
-			this.babyCryLevel = BABY_CRY_MAX;
-		} else if (this.babyCryLevel < BABY_CRY_MIN) {
-			this.babyCryLevel = BABY_CRY_MIN;
-		}
-		if (this.babyCryLevel > BABY_CRY_TARGET) {
-			this.view.babyHappy = false;
-			this.sound.PlaySound(this.view.getContext());
-		} else if (this.babyCryLevel <= BABY_CRY_TARGET) {
-			this.view.babyHappy = true;
-			this.sound.StopSound();
+		if (this.babyHappyTime <= 0) {
+			float accelY = this.input.getAccelY();
+			if (accelY < WEAK_SHAKE_THRESHOLD) {
+				this.babyCryLevel += BABY_CRY_CHANGE_NO;
+			} else if (accelY >= WEAK_SHAKE_THRESHOLD
+					&& accelY < STRONG_SHAKE_THRESHOLD) {
+				this.babyCryLevel += BABY_CRY_CHANGE_WEAK;
+			} else if (accelY >= STRONG_SHAKE_THRESHOLD) {
+				this.babyCryLevel += BABY_CRY_CHANGE_STRONG;
+			}
+			if (this.babyCryLevel > BABY_CRY_MAX) {
+				this.babyCryLevel = BABY_CRY_MAX;
+			} else if (this.babyCryLevel < BABY_CRY_MIN) {
+				this.babyCryLevel = BABY_CRY_MIN;
+			}
+			if (this.babyCryLevel > BABY_CRY_TARGET) {
+				this.view.babyHappy = false;
+				this.sound.PlaySound(this.view.getContext());
+			} else if (this.babyCryLevel <= BABY_CRY_TARGET) {
+				this.view.babyHappy = true;
+				this.sound.StopSound();
+				this.babyHappyTime = BABY_HAPPY_DURATION;
+			}
+		} else {
+			this.babyHappyTime -= 1;
 		}
 	}
 
