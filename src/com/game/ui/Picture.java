@@ -1,6 +1,7 @@
 package com.game.ui;
 
 import com.game.integration.SensorListener;
+import com.game.persistence.IGameThread;
 import com.game.persistence.PlayState;
 
 import android.content.Context;
@@ -14,7 +15,7 @@ import android.view.SurfaceView;
 public class Picture extends SurfaceView implements SurfaceHolder.Callback {
 	private static final String TAG = Picture.class.getSimpleName();
 	public boolean babyHappy;
-	public PlayState thread;
+	public IGameThread thread;
 
 	public Picture(Context context) {
 		super(context);
