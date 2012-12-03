@@ -34,7 +34,7 @@ public class Sound implements IAudio{
 
 	public void StopSound() {
 		if (this.mp.isPlaying()) {
-			mp.stop();
+			mp.pause();
 		}
 	}
 
