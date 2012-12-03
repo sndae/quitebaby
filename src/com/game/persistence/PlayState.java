@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.SurfaceHolder;
 
 import com.game.integration.SensorListener;
+import com.game.integration.Sound;
 import com.game.ui.Picture;
 
 /**
@@ -55,11 +56,14 @@ public class PlayState extends BaseGameState implements SensorEventListener{
 	
 	private SensorListener input;
 	
+	private Sound sound;
+	
 	public PlayState(Picture view, SurfaceHolder holder, SensorListener input) {
 		this.view = view;
 		this.input = input;
 		this.holder = holder;
 		this.running = false;
+		this.sound = new Sound();
 		this.babyCryLevel = BABY_CRY_START;
 	}
 
@@ -104,8 +108,10 @@ public class PlayState extends BaseGameState implements SensorEventListener{
 		}
 		if (this.babyCryLevel > BABY_CRY_TARGET){
 			this.view.babyHappy = false;
+			this.sound.PlaySound(this.view.getContext());
 		} else if (this.babyCryLevel <= BABY_CRY_TARGET){
 			this.view.babyHappy = true;
+			this.sound.StopSound();
 		}
 	}
 
