@@ -24,7 +24,6 @@ public class Sound {
 	 */
 	public void PlaySound(Context context) {
 		if (!this.mp.isPlaying()) {
-			
 			mp.start();
 		}
 	}
@@ -35,10 +34,7 @@ public class Sound {
 
 	public void StopSound() {
 		if (this.mp.isPlaying()) {
-			mp.pause();
-			
-	
-			
+			mp.stop();
 		}
 	}
 
