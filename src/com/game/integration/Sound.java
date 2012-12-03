@@ -5,21 +5,27 @@ import com.game.ui.R;
 import android.content.Context;
 import android.media.MediaPlayer;
 
-
-
 public class Sound {
 	public MediaPlayer mp;
-	
-	
-	public void PlaySound(Context context){
-		
-		mp = MediaPlayer.create(context,R.raw.baby);
-		mp.reset();
-		mp.start();
-	
+
+	public Sound(Context context) {
+		this.mp = MediaPlayer.create(context, R.raw.baby);
 	}
-	 
-	public void StopSound(){mp.release(); mp.pause();}
-	
-	public void PauseSound(){}
+
+	public void PlaySound(Context context) {
+		if (!this.mp.isPlaying()) {
+			mp.reset();
+			mp.start();
+		}
+	}
+
+	public void StopSound() {
+		if (this.mp.isPlaying()) {
+			mp.release();
+			mp.pause();
+		}
+	}
+
+	public void PauseSound() {
+	}
 }
