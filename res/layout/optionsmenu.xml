@@ -6,25 +6,6 @@
     android:background="@drawable/baby_rattle"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/soundLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:text="Sound:"
-        android:textSize="20sp" />
-
-    <Spinner
-        android:id="@+id/onOff"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
-        android:entries="@array/soundOptions" />
-
    <TextView
         android:id="@+id/difficultyLabel"
         android:layout_width="wrap_content"
