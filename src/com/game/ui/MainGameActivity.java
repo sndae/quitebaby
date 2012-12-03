@@ -26,13 +26,13 @@ public class MainGameActivity extends Activity {
 		new_game.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				loadNewGame();
+				
 			}
 		});
 			
 		how_to_play.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				loadHowToPlayMenu();
-				finish();
 			}
 		});
 		//calls options menu method
@@ -56,6 +56,7 @@ public class MainGameActivity extends Activity {
 		private void loadNewGame(){
 		Intent loadNewGame = new Intent(this, GameActivity.class);
 		startActivity(loadNewGame);
+		
 		}
 		//method to load the options menu
 		private void loadOptionsMenu() {
