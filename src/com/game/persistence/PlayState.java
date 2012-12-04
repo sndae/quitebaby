@@ -155,8 +155,10 @@ public class PlayState extends BaseGameState implements SensorEventListener {
 		while (this.running) {
 			long beginTime = System.currentTimeMillis();
 			int framesSkipped = 0;
+			//Game Loop Here
 			this.update();
 			this.render();
+			//Frames Per Second Control
 			long timeDiff = System.currentTimeMillis() - beginTime;
 			int sleepTime = (int) (FRAME_PERIOD - timeDiff);
 			if (sleepTime > 0) {
@@ -179,8 +181,11 @@ public class PlayState extends BaseGameState implements SensorEventListener {
 	 */
 	@Override
 	public void update() {
+		//If the baby is not happy...
 		if (this.babyHappyTime <= 0) {
+			//Step 1A: Get input from accelerometer
 			float accelY = this.input.getAccelY();
+			//Step 2A: Determine magnitude of shake
 			if (accelY < WEAK_SHAKE_THRESHOLD) {
 				this.babyCryLevel += BABY_CRY_CHANGE_NO;
 			} else if (accelY >= WEAK_SHAKE_THRESHOLD
@@ -189,11 +194,14 @@ public class PlayState extends BaseGameState implements SensorEventListener {
 			} else if (accelY >= STRONG_SHAKE_THRESHOLD) {
 				this.babyCryLevel += BABY_CRY_CHANGE_STRONG;
 			}
+			//Step 3A: Ensure babyCryLevel does not exceed Min or Max 
 			if (this.babyCryLevel > BABY_CRY_MAX) {
 				this.babyCryLevel = BABY_CRY_MAX;
 			} else if (this.babyCryLevel < BABY_CRY_MIN) {
 				this.babyCryLevel = BABY_CRY_MIN;
 			}
+			//Step 4A: Determine whether baby should be crying and 
+			//act appropriately
 			if (this.babyCryLevel > BABY_CRY_TARGET) {
 				this.view.setBabyHappy(false);
 				this.sound.PlaySound(this.view.getContext());
@@ -202,9 +210,13 @@ public class PlayState extends BaseGameState implements SensorEventListener {
 				this.sound.StopSound();
 				this.babyHappyTime = BABY_HAPPY_DURATION;
 			}
+		//Else, baby is happy
 		} else {
+			//Step 1B: Reduce time remaining by 1 frame
 			this.babyHappyTime -= 1;
+			//Step 2B: Check if there is no time remaining
 			if (this.babyHappyTime <= 0){
+				//If no time remaining, reset babyCryLevel
 				this.babyCryLevel = BABY_CRY_START;
 			}
 		}
